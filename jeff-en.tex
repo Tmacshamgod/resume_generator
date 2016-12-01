@@ -1,0 +1,242 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+% moderncv themes
+%\moderncvtheme[blue, roman]{casual}
+% optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[blue]{classic}                % idem
+
+\usepackage[utf8]{inputenc}
+
+% adjust the page margins
+\usepackage[scale=0.8]{geometry}
+\recomputelengths                             % required when changes are made to page layout lengths
+
+% personal data
+\firstname{Jeff}
+\familyname{Zhang}
+\title{Curriculum Vitae}
+\mobile{+86 18721705215}
+\email{jeffzhang8716@icloud.com}
+%% \quote{``Do what you fear, and the death of fear is certain.''\\-- Anthony Robbins}
+
+%\phone{(312) 413-8265}                      % optional, remove the line if not wanted
+%\fax{312 996 1491}                          % optional, remove the line if not wanted
+%\photo[64pt]{avatar.jpg}                         % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file;
+
+\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
+
+%% \renewcommand*{\sectionfont}{\LARGE\sffamily\monospace\slshape}
+%% \renewcommand*\addressfont{\fontfamily{pzc}\selectfont}
+%% \renewcommand*\sectionfont{\fontfamily{pzc}\fontsize{20}{24}\selectfont}
+
+\begin{document}
+\maketitle
+
+\section{Skills}
+\cventry{}{Java = Python > Scala > JavaScript > Go}{}{}{}{}
+\cventry{}{Linux, Shell, Git, Docker, Vim, Tmux}{}{}{}{}
+\cventry{}{Flume, Kafka, Spark, Hadoop, HDFS, HBase, MongoDB, Redis}{}{}{}{}
+
+\section{Work Experience}
+\subsection{CloudTropy, 2015/10 -- Present}
+\cventry{}
+{Big Data Project}
+{Java, Scala}
+{}{}
+{
+The big data platform project is comprised of the collection, computation, storage, and visualization of data. We use Flume to collect large amounts of log data, and then integrates it with Kafka as data pipes form different kinds of consumers. The most important consumer is Spark streaming, which handles real-time analysis and also some enrichment work for future computation. The HDFS Connector allows for the export of data from Kafka topics to HDFS files in Avro format and integration with Hive to make data immediately available for offline analysis. Apache Spark and Spark SQL read the raw data from HDFS and then undergo MapReduce and Hive computation, resulting in data which is stored in MySQL. A web server provides RESTful APIs to the front end for data visualization while Hbase is used for random real-time read and write access to the stored data, allowing for real-time analysis and visualization
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{The Monitor System}
+{Python, JavaScript}
+{}{}
+{
+The whole monitor system is comprised of three main modules. The back end code is written in Python and the front end in JavaScript. The Captor module integrates with Flume, retrieving information on data consumption from the Flume metrics payload. It then stores this information into Redis. This module also includes the front end dashboard for real time data visualization using Highstock. The Eagle module is responsible for monitoring the data and alerting Wechat users for exception conditions. The last one is the Wechat server that encapsulates the official Wechat SDK to handle http requests using Tornado
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Log Analysis}
+{Python, Shell}
+{}{}
+{
+Log analysis is a utility for extracting the error and warning logs of the Apache distributed systems running on live productive system. It's comprised of a shell program invoked by Python which mails the results to the team members every early morning. It also has a web server running to provide a concise web page for displaying the result files, and a clean script to clean old logs
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{The Configure Server}
+{Python}
+{}{}
+{
+The configure server is in charge of updating configuration files for big data distributed systems. It provides configuration template files and generates its own configuration files using the parameters set when one requests an update of the application's configuration files. It will send the configuration files to the configure path of the application and signal the application to update itself
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Scheduler}
+{Java}
+{}{}
+{
+Scheduler is a job-scheduling application for both real-time and offline computation tasks using Quartz. It allows you to schedule periodical tasks, instant tasks, and dependent tasks with easy configuration for adding, removing, and modifying tasks. It includes a web page for adjusting the task configuration and displaying the details and status of running tasks. The web page contains a pivotal data repair function, which invokes a utility that's used for rescheduling the failed tasks after hotfixing. The web page can also walk you though dependent tasks for the previous days or months with just the touch of a button
+}
+
+\vspace*{0.2\baselineskip}
+\subsection{Second Spectrum, 2015/03 -- 2015/09}
+\cventry{}
+{Syncer}
+{Python}
+{}{}
+{
+Syncer provides a stable sync service for NBA videos between Shanghai HDFS cluster and Los Angles S3 storage using Python
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Video Alignment}
+{Python}
+{}{}
+{
+Video alignment helper is used to create snapshots of NBA videos for labellers to streamline the process of quick checking the game videos using Python
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Bullet Screen}
+{Python}
+{}{}
+{
+Bullet Screen is a demo project for the company's annual Hackthon match. This idea is already applied to the real product, which is used to enhance the fans' interaction experience
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Media cleaner}
+{Golang}
+{}{}
+{
+Media cleaner is responsible for cleaning old videos in the video storage system when the free disk space is below the threshold using Golang. The search function of the video storage system should be as efficient as possible among the huge uncountable videos. The main idea of that is pretty similar with SkipList and binary search, which makes it faster to search the symlink of the actual video file
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{The Play-By-Play system}
+{Golang}
+{}{}
+{
+The Play-By-Play system is used to track all the stats of every player and teams at any moment during the game time, then store the stats information into MongoDB for future analysis. It uses different handlers to count the stats of different events of the JSON payload provided by the 3rd party sports company using Golang
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{NBA draft}
+{Python}
+{}{}
+{
+NBA draft data analysis and visualization is a Python script that scrapes, cleans and visualizes NBA draft data from 1966 to 2015. It scrapes the data using BeautifulSoup library and then stores it in a DataFrame using the pandas library. After that matplotlib and seaborn library are used to create various visualizations from the data, allowing for more efficient analysis. This script also applies to NFL draft data analysis and visualization
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{NBA shot charts}
+{Python}
+{}{}
+{
+NBA shot charts is a Python script that extracts a player’s shot chart data and then plots it using matplotlib and seaborn library. The shot charts panel has been used in ESPN broadcasts for data analysis during live NBA game
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{NBA player movements}
+{Python}
+{}{}
+{
+NBA player movements is a Python script that extracts extra information from the play by play movement animations on the NBA stats website, and then plots the player's movement throughout the animation
+}
+
+%\section{Master thesis}
+%\cvline{title}{\emph{Title}}
+%\cvline{supervisors}{Supervisors}
+%\cvline{description}{\small Short thesis abstract}
+
+\section{Project Experience}
+%% \subsection{Research Projects}
+\cventry{}
+{Simple Search Engine}
+{Python}
+{}{}
+{
+The search engine is a prototype project that crawls wikipedia documents and provides multiple search options. It's comprised of three main components and maintains the whole processes in near real time. The web crawler is used for harvesting wiki links from page to page. The inverted index is a database that is organized and searchable of the crawler's harvested results. The search and retrieval mechanism allows users to search keywords and return results in a predetermined order using the TF-IDF model and PageRank algorithm
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Simple Web Server}
+{Python}
+{}{}
+{
+The simple concurrent web server complies with WSGI to match different web frameworks in Python. The server handles multiple connections though its use of the multi-threading model and thread pool technique
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Simple Interpreter}
+{Python}
+{}{}
+{
+The simple interpreter is a fully functional recursive-descent interpreter for a subset of Pascal programming language in Python. The interpreter translates source code into some efficient intermediate representation, which is called Abstract Syntax Tree and then immediately execute this. A symbol table maintains that each identifier in a program's source code is associated with information relating to its declaration or appearance in the source
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Simple Shell}
+{Python}
+{}{}
+{
+The simple shell program is a type of user interface that allows user to communicate with the kernel in Python. It allows you to write commands using your keyboard and execute them through the operating system. The parser is the software component that reads the command line and puts it into a data structure called Command Table that will store the commands that will be executed. The executor will take the command table generated by the parser and for every simple command in the array it will create a new process
+}
+
+%% \cventry{2011--present}
+%% {AlgoTrading}
+%% {Go, Java}
+%% {}{}
+%% {An analyzing tool for offline trading strategy emulating. Data are parsed from TongDaXin stock trading software, I emulated and evaluated several trading strategies based on this project.}
+
+%% \cventry{2008}{GPGPU Optimization}{C++, CTM IL}{}{}{Research on GPGPU program optimization and platform features}
+
+%% \subsection{Course Projects}
+%% \cventry{2008}{Compiler for Tiger Language}{C, Flex, Bison}{}{}{Project for the course Compilers}
+
+%% \subsection{Other Projects}
+\vspace*{0.2\baselineskip}
+\cventry{}
+{Apartment Searcher}
+{Python}
+{}{}
+{
+This is a project which runs 24/7 to instantly filter and notify the user about the newest apartments that meet their criteria. It first scrapes listing from SmartShanghai using Requests and Beautiful Soup. The results are filtered to include location, proximity to requested metro stations, price, number of roommates, and whether or not the results are posted by an agency. Once the results are filtered they are posted to Flowdock using Python-Flowdock client for further team discussion
+}
+
+\section{Education}
+\cventry{2010 -- 2014}{BS in Software Engineering}{Jiangsu University}{}{}{}
+
+\section{Awards}
+\cventry{2013, 2014}{Second Grade Scholarship}{}{}{}{}
+\cventry{2015}{Coursera Verified Certificates}{The Hardware \& Software Interface}{}{}{}
+\cventry{2016}{Coursera Verified Certificates}{Algorithms, PartI \& PartII}{}{}{}
+% \closesection{}                   % needed to renewcommands
+% \renewcommand{\listitemsymbol}{-} % change the symbol for lists
+
+%\section{Extra 1}
+%\cvlistitem{Item 1}
+%\cvlistitem{Item 2}
+%\cvlistitem[+]{Item 3}            % optional other symbol
+
+%\section{Extra 2}
+%\cvlistdoubleitem[\Neutral]{Item 1}{Item 4}
+%\cvlistdoubleitem[\Neutral]{Item 2}{Item 5}
+%cvlistdoubleitem[\Neutral]{Item 3}{}
+
+\end{document}

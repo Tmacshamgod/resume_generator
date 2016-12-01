@@ -1,0 +1,237 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+% moderncv themes
+%\moderncvtheme[blue]{casual}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[green]{classic}                % idem
+\usepackage{xunicode, xltxtra}
+\XeTeXlinebreaklocale "zh"
+\widowpenalty=10000
+
+%\setmainfont[Mapping=tex-text]{文泉驿正黑}
+
+% character encoding
+%\usepackage[utf8]{inputenc}                   % replace by the encoding you are using
+\usepackage{CJKutf8}
+  
+% adjust the page margins
+\usepackage[scale=0.8]{geometry}
+\recomputelengths                             % required when changes are made to page layout lengths
+\setmainfont[Mapping=tex-text]{Hiragino Sans GB}
+\setsansfont[Mapping=tex-text]{Hiragino Sans GB}
+\CJKtilde
+
+% personal data
+\firstname{张俊}
+\familyname{}
+\title{}               % optional, remove the line if not wanted
+
+\mobile{18721705215}                    % optional, remove the line if not wanted
+\email{jeffzhang8716@icloud.com}                      % optional, remove the line if not wanted
+%% \quote{\small{``Do what you fear, and the death of fear is certain.''\\-- Anthony Robbins}}
+
+\nopagenumbers{}
+
+\begin{document}
+
+\maketitle
+
+\section{技能}
+\cventry{}{Java = Python > Scala > JavaScript > Go}{}{}{}{}
+\cventry{}{Linux, Shell, Git, Docker, Vim, Tmux}{}{}{}{}
+\cventry{}{Flume, Kafka, Spark, Hadoop, HDFS, HBase, MongoDB, Redis}{}{}{}{}
+
+\section{工作经历}
+\subsection{云熵网络, 2015/10 --- 现在}
+\renewcommand{\baselinestretch}{1.0}
+
+\cventry{}
+{大数据基础平台}
+{Java, Scala}
+{}{}
+{
+整个大数据平台包括数据的采集，计算，存储以及可视化。通过~Flume~来采集大量日志信息，然后与~Kafka~集成，提供数据管道给不同类型的消费者。其中最重要的一个消费者是~Spark Streaming，它来处理实时计算任务。Connector~负责将~Kafka~中的数据以️~Avro~的格式传输到~HDFS，并通过~Hive~的方式提供接口，进行~Spark~离线任务的计算，并将最终的结果存储到~Hbase，再以~RESTful~接口的形式提供给前端
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{实时监控系统}
+{Python, JavaScript}
+{}{}
+{
+整个监控系统主要有三个模块组成，Captor~模块负责与~Flume~集成，实时采集到~Flume~的数据消费信息，经过逻辑计算和统计后以统一的格式写入~Redis，这个模块还包括数据生产消费情况的前端实时页面展示。Eagle~模块负责监控数据状况，并对异常情况进行提前预警，及时在微信群里推送消息。最后一个是微信服务器，封装微信~SDK~提供报警接口
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{日志分析}
+{Python, Shell}
+{}{}
+{
+日志分析的职责是采集和提取在产线上运行的~Apache~分布式系统的运行日志，它通过~Python~来调用~Shell~脚本来提取不同服务器上的错误运行日志，并将结果通过邮件的方式发送给相关人员快速定位问题。它还包括一个前端展示页面，陈列不同服务器在不同日期下的历史错误日志列表，还有一个定时清理脚本负责维护定期错误日志信息
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{配置服务器}
+{Python}
+{}{}
+{
+配置服务器主要用来更新和管理数据平台组件庞大的配置文件，它提供相应服务器角色的配置文件模版，在需要更新相应服务器配置文件后，根据参数来生成最新的配置文件，然后将配置更新到相应的服务器上，极大地方便了服务器组件的更新和修改
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{计算任务调度系统}
+{Java}
+{}{}
+{
+计算任务调度系统负责所有实时和离线计算任务的调度触发，它支持任意周期任务，立即出发任务，以及各任务之间的依赖关系，对于新增，删减或者更新任务时只需要做到更新调度配置文件，它还记录和展示了各个任务的运行状况来监控预警和分析运行状况。该系统还提供了对全量和增量失败任务的一键修复，重演，和再调度功能
+}
+
+\newpage
+\subsection{Second Spectrum, 2015/03 --- 2015/09}
+\renewcommand{\baselinestretch}{1.0}
+\cventry{}
+{服务器数据同步}
+{Python}
+{}{}
+{
+用~Python~实现了洛杉矶和上海两地的~NBA~比赛录像的同步和更新，通过~S3~对象的~ETag~来建立哈希做到视频文件的防重复下载
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{视频校准}
+{Python}
+{}{}
+{
+用~Python~实现了对~NBA~比赛录像死球等异常情况的快速检查，方便数据分析员标记时间段
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{弹幕~Demo~}
+{Python}
+{}{}
+{
+用~Python~实现了比赛直播弹幕的创意，并在黑客马拉松中获得第二名，后续应用到实际项目中，来增强球迷观赛体验和互动
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{视频文件删除}
+{Golang}
+{}{}
+{
+用~Go~实现了~NBA~比赛视频文件系统中的文件删除模块，并用~SkipList~和二分思想提升了对文件搜索的效率
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{~PBP~系统}
+{Golang}
+{}{}
+{
+用~Go~实现了~Play By Play~系统，分析和统计实时比赛相应的~JSON~文件，通过调用不同的~Handler~来统计和处理不同球员，不同球队，不同比赛等各种数据，后续提供给机器学习团队使用
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{~NBA~选秀}
+{Python}
+{}{}
+{
+用~Python~抓取，清洗和可视化从~1966~年到~2015~年的所有选秀数据，通过~Requests~和~BeautifulSoup~提取相关信息并存入~Panda~库的~DataFrame~中，然后再使用~matplotlib~和~seaborn~库创建各种可视化图表。同样适用于~NFL~选秀数据分析
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{~NBA~投篮热图}
+{Python}
+{}{}
+{
+用~Python~通过~Requests~和~BeautifulSoup~提取每个篮球运动员的投篮图表数据，然后再使用~matplotlib~和~seaborn~创建投篮热图。在~ESPN~球赛直播中已使用此类图表来更加形象和可视化的实时分析球员表现
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{~NBA~球员运动轨迹}
+{Python}
+{}{}
+{
+用~Python~通过~Requests~和~BeautifulSoup~提取~NBA~官网上每个篮球运动员的运动动画数据，然后再使用~matplotlib~和~seaborn~创建球员运动轨迹，以此来模拟比赛中球员之间的运动路线和对位情况，以供教练和球员进行战术分析总结
+}
+
+\subsection{M\&M Software, 2014/04 --- 2015/02}
+\renewcommand{\baselinestretch}{1.0}
+\cventry{}
+{工业自动化项目}
+{C\#, .NET}
+{}{}
+{
+采用敏捷开发方式给欧洲海上挖油的船舶研发控制系统，与硬件传感器交互集成，使得邮轮在海上由于风浪因素而倾斜颠簸的时候产生相反作用的力量以保持平稳，从而防止油管爆裂，以减少成本损失
+}
+
+\section{项目经历}
+\renewcommand{\baselinestretch}{1.2}
+
+\cventry{}
+{简单搜索引擎}
+{Python}
+{}{}
+{
+用~Python~实现了搜索引擎的雏形，整个流程包括从~Wikipedia~定时抓取文档，建立倒排索引到数据库，然后提供多种实时查询搜索选项。爬虫模块使用深度优先算法抓取整个文档集合，然后根据中文分词算法建立倒排索引数据结构，最后根据~TF-IDF~模型和~PageRank~算法排序文档集合，再提供关键词组合搜索选项
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{简单~Web~服务器}
+{Python}
+{}{}
+{
+用~Python~实现了简单~Web~服务器，遵循~WSGI~服务器网关接口规范。使用多线程和线程池模型来处理并发请求
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{简单编译器}
+{Python}
+{}{}
+{
+用~Python~实现了对~Pascal~部分语法的一个完整功能的递归下降编译器。首先对源代码进行词法和语法分析，转换成~AST~后立即执行。其中用一张符号表维持了源程序中的每一个标识符和它在源程序中申明和出现地方的依赖关系
+}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{简单~Shell~命令行}
+{Python}
+{}{}
+{用Python实现了能够让用户和操作系统内核交流的~Shell~命令行，它给操作系统提供了各种命令接口。通过解析器来解析命令行参数，将结果存储到符号表中，最后通过多线程的方式来执行在符号表中的每一个命令}
+
+\vspace*{0.2\baselineskip}
+\cventry{}
+{租房机器人}
+{Python}
+{}{}
+{
+用Python实现了一个能够~7*24~小时实时抓取和过滤满足需求的最新租房帖子。通过~Requests~和~BeautifulSoup~这两个库来抓取和提取租房帖子的关键信息，包括地理位置，地铁信息，价格，室友数量和是否收取中介费等。一旦有满足需求的最新帖子，它会被立即推送到Flowdock团队讨论应用中
+}
+
+%% \section{助教经验}
+%% \cventry{2011}{计算机系统工程}{}{}{}{}
+%% \cventry{2009,2010}{操作系统}{}{}{}{}
+
+\section{教育}
+\cventry{2010 --- 2014}{本科, 软件工程}{江苏大学}{}{}{}  
+
+\section{奖项}
+\cventry{2013, 2014}{二等奖学金}{}{}{}{}
+\cventry{2015}{Coursera Verified Certificates}{The Hardware \& Software Interface}{}{}{}
+\cventry{2016}{Coursera Verified Certificates}{Algorithms, PartI \& PartII}{}{}{}
+
+% \cvline{Photography}{\small Digital photography is my newest hobby.}
+
+\closesection{}                   % needed to renewcommands
+\renewcommand{\listitemsymbol}{-} % change the symbol for lists
+
+\end{document}
